@@ -1,16 +1,12 @@
-package main.java.toolBox.io;
+package toolBox.io;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-/**
- * Created by Ari on 7/28/16.
- */
 public class JsonReadWrite {
     public static void main(String[] args) throws IOException {
         Path myFilePath = Paths.get("Person.json");
@@ -31,5 +27,4 @@ public class JsonReadWrite {
         System.out.println(personObject2.getName());
         System.out.println(personObject2.getAge());
     }
-
 }

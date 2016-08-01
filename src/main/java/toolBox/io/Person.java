@@ -1,4 +1,4 @@
-package main.java.toolBox.io;
+package toolBox.io;
 
 /**
  * Created by Ari on 7/28/16.
