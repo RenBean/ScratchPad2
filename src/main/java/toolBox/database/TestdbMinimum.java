@@ -15,9 +15,9 @@ public class TestdbMinimum {
             Class.forName("org.hsqldb.jdbcDriver");
             Connection conn = DriverManager.getConnection("jdbc:hsqldb:db_file","sa","");
             Statement st = conn.createStatement();
-            ResultSet rs = st.executeQuery("SELECT * FROM sample_table");
+            ResultSet rs = st.executeQuery("SELECT id,str_col,num_col FROM sample_table");
             while(rs.next()) {
-                String rowResults = rs.getInt(1)+" -- "+rs.getString(2)+" -- "+rs.getInt(3);
+                String rowResults = rs.getInt("id")+" -- "+rs.getString("str_col")+" -- "+rs.getInt("num_col");
                 System.out.println(rowResults);
             }
         } catch(Exception e) {
