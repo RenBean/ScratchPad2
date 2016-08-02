@@ -1,12 +1,14 @@
 package toolBox.database;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 /**
  * Created by Ari on 8/2/16.
  */
-public class SimpleDbQueryExample {
-
+public class SimpleDbUpdateExample {
     static final String JDBC_DRIVER = "org.hsqldb.jdbcDriver";
     static final String DB_URL = "jdbc:hsqldb:db_file";
     static final String USER = "sa";
@@ -23,35 +25,22 @@ public class SimpleDbQueryExample {
             System.out.println("Connecting to database...");
             conn = DriverManager.getConnection(DB_URL,USER,PASS);
 
-            //STEP 3: Execute a query
+            //STEP 3: Execute update
             stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT id, str_col, num_col FROM sample_table");
+            stmt.executeUpdate("UPDATE sample_table SET str_col = 'Dodge' WHERE num_col = 200");
 
-            //STEP 4: Extract data from result set
-            while(rs.next()) {
-                //Retrieve by column name
-                int id  = rs.getInt("id");
-                String str_col = rs.getString("str_col");
-                int num_col = rs.getInt("num_col");
-
-                //Display values
-                String resultString = "ID: " + id;
-                resultString += ", STR_COL: " + str_col;
-                resultString += ", NUM_COL: " + num_col;
-                System.out.println(resultString);
-            }
-            //STEP 5: Clean-up environment
-            rs.close();
+            //STEP 4: Clean-up environment
             stmt.close();
             conn.close();
+        } catch(SQLException se) {
+            se.printStackTrace();
         } catch(Exception e) {
             e.printStackTrace();
         } finally {
             try {
                 if(stmt!=null)
                     stmt.close();
-            } catch(SQLException sqle) {
-                sqle.printStackTrace();
+            } catch(SQLException se2) {
             } try {
                 if(conn!=null)
                     conn.close();
@@ -60,8 +49,6 @@ public class SimpleDbQueryExample {
             }
         }
         System.out.println("Goodbye!");
-        //force quit.. etc
     }
-
 
 }
