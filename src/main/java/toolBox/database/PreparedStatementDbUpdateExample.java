@@ -27,8 +27,8 @@ public class PreparedStatementDbUpdateExample {
 
             //STEP 3: Execute a query
             stmt = conn.prepareStatement("UPDATE sample_table SET str_col = ? WHERE num_col = ?");
-            stmt.setString(1,"Tesla");
-            stmt.setInt(2,300);
+            stmt.setString(1,"Tesla"); //first ? = tesla
+            stmt.setInt(2,300); // second ? =
             stmt.executeUpdate();
 
             //STEP 4: Clean-up environment
