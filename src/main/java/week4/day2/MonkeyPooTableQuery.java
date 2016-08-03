@@ -12,7 +12,7 @@ public class MonkeyPooTableQuery {
     static final String USER = "dumbMonkey";
     static final String PASS = "";
 
-    public static void main(String[] args) {
+    public static void monkeyPooTableQuery() {
         Connection con = null;
         PreparedStatement stmt = null;
         try {
@@ -20,25 +20,31 @@ public class MonkeyPooTableQuery {
             Class.forName(JDBC_DRIVER);
 
             //STEP 2: Open a connection
-            System.out.println("Connecting to database...");
+            System.out.println("Accessing registry...");
             con = DriverManager.getConnection(DB_URL,USER,PASS);
 
             //STEP 3: Execute a query
-            stmt = con.prepareStatement("SELECT id, mName, mDate, note FROM monkey_registry WHERE id < ?");
+            stmt = con.prepareStatement("SELECT id, monkeyName, monkeyDate, monkeyNote, monkeyIn, monkeyOut FROM monkey_registry WHERE id < ?");
             stmt.setInt(1,100);
             ResultSet rs = stmt.executeQuery();
 
             //STEP 4: Extract data from result set
             while(rs.next()) {
                 //Retrieve by column name
-                String name  = rs.getString("mName");
-                String note = rs.getString("note");
-                String date = rs.getString("mDate");
+                String monkeyName  = rs.getString("monkeyName");
+                String monkeyDate = rs.getString("monkeyDate");
+                String monkeyNote = rs.getString("monkeyNote");
+                String monkeyIn = rs.getString("monkeyIn");
+                String monkeyOut = rs.getString("monkeyOut");
 
                 //Display values
-                String resultString = "mName: " + name;
-                resultString += ", mDate: " + date;
-                resultString += ", note: " + note;
+                String resultString;
+                resultString = "Name: " + monkeyName;
+                resultString += ", Date: " + monkeyDate;
+                resultString += ", Note: " + monkeyNote;
+                resultString += ", In: " + monkeyIn;
+                resultString += ", Out: " + monkeyOut;
+
                 System.out.println(resultString);
             }
             //STEP 5: Clean-up environment
@@ -61,7 +67,7 @@ public class MonkeyPooTableQuery {
                 se.printStackTrace();
             }
         }
-        System.out.println("Goodbye!");
+        System.out.println("Query complete...");
     }
 
 }

@@ -4,6 +4,7 @@ package week4.day2;
  * Created by Ari on 8/2/16.
  */
 
+
 import java.sql.*;
 
 
@@ -16,26 +17,27 @@ public class MonkeyPooTableCreator {
 
         con = DriverManager.getConnection("jdbc:hsqldb:"
                         + registry_file_name_prefix,    // filenames
-                "dumbMonkey",                     // username
-                "");                      // password
+                "dumbMonkey",  //un
+                "");           //pw
     }
 
-    public static void main(String[] args) {
+    public static void monkeyPooTableCreator() {
 
         MonkeyPooTableCreator registry = null;
 
         try {
             registry = new MonkeyPooTableCreator("registry_file");
         } catch (Exception ex1) {
-            ex1.printStackTrace();    // could not start db
+            ex1.printStackTrace();
 
-            return;                   // bye bye
+            return;
         }
 
         try {
 
+
             registry.update(
-                    "CREATE TABLE monkey_registry ( id INTEGER IDENTITY, mName VARCHAR(25), mDate VARCHAR(12), note VARCHAR(250))");
+                    "CREATE TABLE monkey_registry (id INTEGER IDENTITY, monkeyName VARCHAR(20), monkeyDate VARCHAR(20), monkeyNote VARCHAR(30), monkeyIn VARCHAR(10), monkeyOut VARCHAR(10))");
         } catch (SQLException ex2) {
 
         }
@@ -43,14 +45,11 @@ public class MonkeyPooTableCreator {
         try {
 
             registry.update(
-                    "INSERT INTO monkey_registry(mName,mDate,note) VALUES('Bing', '03032016', 'Great Fun!')");
+                    "INSERT INTO monkey_registry(monkeyName,monkeyDate,monkeyNote,monkeyIn,monkeyOut) VALUES('Bing', 'March 16, 2016', 'Great Fun!','9:20am','1:30pm')");
             registry.update(
-                    "INSERT INTO monkey_registry(mName,mDate,note) VALUES('Google', '03042016', 'What was that?')");
+                    "INSERT INTO monkey_registry(monkeyName,monkeyDate,monkeyNote,monkeyIn,monkeyOut) VALUES('Google', 'March 17, 2016', 'What was that?','10:00am','5:30pm')");
 
-            // do a query
             registry.query("SELECT * FROM monkey_registry WHERE id < 100");
-
-            // at end of program
             registry.shutdown();
         } catch (SQLException ex3) {
             ex3.printStackTrace();
@@ -60,7 +59,6 @@ public class MonkeyPooTableCreator {
     public void shutdown() throws SQLException {
 
         Statement st = con.createStatement();
-
         st.execute("SHUTDOWN");
         con.close();    // if there are no other open connection
     }
@@ -70,37 +68,24 @@ public class MonkeyPooTableCreator {
 
         Statement st = null;
         ResultSet rs = null;
-
-        st = con.createStatement();         // statement objects can be reused with
-
-        rs = st.executeQuery(expression);    // run the query
-
-        // do something with the result set.
+        st = con.createStatement();
+        rs = st.executeQuery(expression);
         dump(rs);
-        st.close();    // NOTE!! if you close a statement the associated ResultSet is
+        st.close();
 
     }
-
-    //use for SQL commands CREATE, DROP, INSERT and UPDATE
     public synchronized void update(String expression) throws SQLException {
 
         Statement st = null;
-
-        st = con.createStatement();    // statements
-
-        int i = st.executeUpdate(expression);    // run the query
-
+        st = con.createStatement();
+        int i = st.executeUpdate(expression);
         if (i == -1) {
-            System.out.println("db error : " + expression);
+            System.out.println("registry error : " + expression);
         }
-
         st.close();
     }
 
     public static void dump(ResultSet rs) throws SQLException {
-
-        // the order of the rows in a cursor
-        // are implementation dependent unless you use the SQL ORDER statement
         ResultSetMetaData meta   = rs.getMetaData();
         int               colmax = meta.getColumnCount();
         int               i;
@@ -108,12 +93,9 @@ public class MonkeyPooTableCreator {
 
         for (; rs.next(); ) {
             for (i = 0; i < colmax; ++i) {
-                o = rs.getObject(i + 1);    // Is SQL the first column is indexed
-
-                // with 1 not 0
+                o = rs.getObject(i + 1);    // In SQL the first column is indexed with 1 not 0
                 System.out.print(o.toString() + " ");
             }
-
             System.out.println(" ");
         }
     }
