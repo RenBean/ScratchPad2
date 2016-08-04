@@ -51,3 +51,6 @@ SELECT Teacher.FirstName, Teacher.LastName, Class.name
 FROM Teacher, class WHERE Teacher.TeacherID = class.ClassID;
 
 
+
+
+

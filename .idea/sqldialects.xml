@@ -5,5 +5,6 @@
     <file url="file://$PROJECT_DIR$/src/main/java/week4/day2/MonkeyPooRegistry.java" dialect="HSQLDB" />
     <file url="file://$PROJECT_DIR$/src/main/java/week4/day2/MonkeyPooTableCreator.java" dialect="HSQLDB" />
     <file url="file://$PROJECT_DIR$/src/main/java/week4/day2/MonkeyPooTableQuery.java" dialect="HSQLDB" />
+    <file url="file://$PROJECT_DIR$/src/main/java/week4/day3/PostItNotes.java" dialect="HSQLDB" />
   </component>
 </project>
