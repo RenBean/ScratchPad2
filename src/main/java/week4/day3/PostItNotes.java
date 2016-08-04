@@ -27,7 +27,7 @@ public class PostItNotes {
                 "Create new category: [CREATE] \n"+
                 "Add new post it note: [NEW] \n" +
                 "View current note categories: [VIEW]  \n" +
-                "Quit Post it notes: [Quit]");
+                "Quit Post it notes: [QUIT]");
 
         String userInput = scanner.nextLine();
 
