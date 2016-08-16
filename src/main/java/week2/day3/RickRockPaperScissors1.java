@@ -1,4 +1,4 @@
-package main.java.week2.day3;
+package week2.day3;
 
 
         import java.util.Random;

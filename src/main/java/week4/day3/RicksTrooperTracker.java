@@ -2,12 +2,11 @@ package week4.day3;
 
 import java.sql.*;
 import java.util.Scanner;
-import java.util.concurrent.SynchronousQueue;
 
-public class TrooperTracker {
+public class RicksTrooperTracker {
 
     public static void main(String[] args) {
-        TrooperTracker trooperTracker = new TrooperTracker();
+        RicksTrooperTracker trooperTracker = new RicksTrooperTracker();
         trooperTracker.checkTable();
         try {
             trooperTracker.readAllRecords(true);
