@@ -1,4 +1,4 @@
-package main.java.week2.day1;
+package week2.day1;
 
 /**
  * Created by Ari on 7/18/16.
@@ -26,17 +26,17 @@ public class FizzBuzz2 {
     }
 }
 
-    class FizzBuzz2Test {
-        public void main(String[] args) {
-            FizzBuzz2 fb = new FizzBuzz2();
-            fb.output(1); // 1
-            fb.output(3); // Fizz
-            fb.output(5); // Buzz
-            fb.output(15); // FizzBuzz
-            fb.output(2); // 2
-            fb.output(100); // Buzz
-        }
-    }
+//    class FizzBuzz2Test {
+//        public void main(String[] args) {
+//            FizzBuzz2 fb = new FizzBuzz2();
+//            fb.output(1); // 1
+//            fb.output(3); // Fizz
+//            fb.output(5); // Buzz
+//            fb.output(15); // FizzBuzz
+//            fb.output(2); // 2
+//            fb.output(100); // Buzz
+//        }
+//    }
 
     //how do i run the test though?
 

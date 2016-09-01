@@ -1,4 +1,4 @@
-package main.java.week2.day1;
+package week2.day1;
 
 /**
  * Created by Ari on 7/18/16.

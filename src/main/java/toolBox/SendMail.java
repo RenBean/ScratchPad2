@@ -19,6 +19,8 @@ public class SendMail {
     static private MimeMessage generateMailMessage;
     static private String emailAddressTo = "<----- Your GMAIL ADDRESS ----->";
     static private String emailAddressFrom = "<----- Your GMAIL ADDRESS ----->";
+    //static private String emailAddressTo = "<----- Your GMAIL ADDRESS ----->";
+    //static private String emailAddressFrom = "<----- Your GMAIL ADDRESS ----->";
     static private String emailSubject = "Sending Email in Java";
     static private String emailBody = "Test email using JavaMail. " + "<br><br> Best, <br>Future Software Engineer";
 
@@ -54,6 +56,7 @@ public class SendMail {
         // Enter your correct gmail UserID and Password
         // if you have 2FA enabled then provide App Specific Password
         transport.connect("smtp.gmail.com", "<----- Your GMAIL ADDRESS ----->", "<----- Your GMAIL PASSWORD ----->");
+        //transport.connect("smtp.gmail.com", "<----- Your GMAIL ADDRESS ----->", "<----- Your GMAIL PASSWORD ----->");
         transport.sendMessage(generateMailMessage, generateMailMessage.getAllRecipients());
         transport.close();
     }
